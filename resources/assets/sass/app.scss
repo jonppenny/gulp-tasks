@@ -9,6 +9,6 @@
 // within a _settings.scss file. Also, this file must be included BEFORE
 // Foundation is imported and the foundation-everything() method is called.
 @import "settings/settings";
-@import "../../node_modules/motion-ui/motion-ui";
-@import "../../node_modules/foundation-sites/scss/foundation";
+@import "../../../node_modules/motion-ui/motion-ui";
+@import "../../../node_modules/foundation-sites/scss/foundation";
 @include foundation-everything();
