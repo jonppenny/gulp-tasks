@@ -8,7 +8,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var gulpIf = require('gulp-if');
 
 gulp.task('sass', function () {
-    gulp.src('./src/sass/**/*.scss')
+    gulp.src('./resources/assets/sass/**/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({
@@ -21,5 +21,5 @@ gulp.task('sass', function () {
 });
 
 gulp.task('default', function () {
-    gulp.watch('./src/sass/**/*.scss', ['sass']);
+    gulp.watch('./resources/assets/sass/**/*.scss', ['sass']);
 });
