@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+$breakpoints: (
+  small: 0,
+  smedium: 480px,
+  medium: 640px,
+  lmedium: 768px,
+  large: 1024px,
+  xlarge: 1200px,
+  xxlarge: 1440px,
+  massive: 999999px
+) !default;
+
+$breakpoint-classes: (small smedium medium lmedium large massive) !default;
