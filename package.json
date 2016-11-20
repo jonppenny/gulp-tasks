@@ -1,19 +1,26 @@
 {
   "devDependencies": {
+    "browser-sync": "^2.18.2",
+    "del": "^2.2.2",
     "eslint": "^3.9.1",
     "eslint-config-standard": "^6.1.0",
     "eslint-plugin-promise": "^2.0.1",
     "eslint-plugin-standard": "^2.0.1",
+    "foundation-sites": "^6.1.1",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
+    "gulp-cache": "^0.4.5",
     "gulp-cssnano": "^2.1.2",
     "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^3.1.1",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^2.2.0",
-    "foundation-sites": "^6.1.1",
+    "gulp-uglify": "^2.0.0",
+    "gulp-useref": "^3.1.2",
     "modernizr": "^3.3.1",
     "motion-ui": "^1.2.2",
     "node-bourbon": "^4.2.3",
+    "run-sequence": "^1.2.2",
     "vue": "^2.0.1",
     "vue-resource": "^1.0.3"
   }
