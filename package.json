@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "eslint": "^3.9.1",
+    "eslint-config-standard": "^6.1.0",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-standard": "^2.0.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-if": "^2.0.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^2.2.0"
+  }
+}
