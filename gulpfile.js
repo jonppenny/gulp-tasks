@@ -8,12 +8,18 @@ var autoprefixer = require('gulp-autoprefixer');
 var gulpIf = require('gulp-if');
 
 gulp.task('sass', function () {
-  gulp.src('src/sass/**/*.scss')
-    .pipe(sass())
+  gulp.src('./src/sass/**/*.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
     .pipe(gulpIf('*.css', cssnano()))
-    .pipe(gulp.dest('public/css/'))
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('./public/css/'))
 });
 
 gulp.task('default', function () {
-  gulp.watch('src/sass/**/*.scss', ['sass']);
+  gulp.watch('./src/sass/**/*.scss', ['sass']);
 });
