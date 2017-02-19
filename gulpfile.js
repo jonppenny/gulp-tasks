@@ -1,18 +1,18 @@
 'use strict';
-
-var gulp = require('gulp');
-var sass = require('gulp-sass');
+var config       = require('./config.json');
+var gulp         = require('gulp');
+var sass         = require('gulp-sass');
 var autoPrefixer = require('gulp-autoprefixer');
-var sourceMaps = require('gulp-sourcemaps');
-var browserSync = require('browser-sync');
-var uglify = require('gulp-uglify');
-var gulpIf = require('gulp-if');
-var cssNano = require('gulp-cssnano');
-var concat = require('gulp-concat');
-var imageMin = require('gulp-imagemin');
-var cache = require('gulp-cache');
-var del = require('del');
-var runSequence = require('run-sequence');
+var sourceMaps   = require('gulp-sourcemaps');
+var browserSync  = require('browser-sync');
+var uglify       = require('gulp-uglify');
+var gulpIf       = require('gulp-if');
+var cssNano      = require('gulp-cssnano');
+var concat       = require('gulp-concat');
+var imageMin     = require('gulp-imagemin');
+var cache        = require('gulp-cache');
+var del          = require('del');
+var runSequence  = require('run-sequence');
 
 gulp.task('browserSync', function () {
     browserSync({
@@ -23,41 +23,42 @@ gulp.task('browserSync', function () {
 });
 
 gulp.task('sass', function () {
-    return gulp.src('./resources/assets/sass/app.scss')
+    return gulp.src(config.sass.src)
         .pipe(sourceMaps.init())
         .pipe(sass())
         .pipe(autoPrefixer({
             browsers: ['last 2 versions'],
-            cascade: false
+            cascade:  false
         }))
         .pipe(gulpIf('*.css', cssNano()))
         .pipe(sourceMaps.write('./'))
-        .pipe(gulp.dest('./public/css'));
+        .pipe(gulp.dest(config.sass.dest));
 });
 
 gulp.task('watch', function () {
-    gulp.watch('./resources/assets/sass/**/*.scss', ['sass']);
-    gulp.watch('./resources/assets/js/**/*.js', ['js']);
+    gulp.watch(config.sass.watch, ['sass']);
+    gulp.watch(config.js.watch, ['js']);
 });
 
 gulp.task('js', function () {
-    return gulp.src('./resources/assets/js/**/*.js')
+    // return gulp.src('./resources/assets/js/**/*.js')
+    return gulp.src(config.js.src)
         .pipe(concat('app.js'))
         .pipe(gulpIf('*.js', uglify()))
-        .pipe(gulp.dest('./public/js'));
+        .pipe(gulp.dest(config.js.dest));
 });
 
 gulp.task('images', function () {
-    return gulp.src('./resources/assets/images/**/*.+(png|jpg|jpeg|gif|svg)')
+    return gulp.src(config.images.src)
         .pipe(cache(imageMin({
             interlaced: true
         })))
-        .pipe(gulp.dest('./public/images'));
+        .pipe(gulp.dest(config.images.dest));
 });
 
 gulp.task('fonts', function () {
-    return gulp.src('./resources/assets/fonts/**/*')
-        .pipe(gulp.dest('./public/fonts'));
+    return gulp.src(config.fonts.src)
+        .pipe(gulp.dest(config.fonts.dest));
 });
 
 gulp.task('clean', function () {
@@ -67,7 +68,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('clean:dist', function () {
-    return del.sync(['./public/**/*', '!./public/images', '!./public/images/**/*', '!./public/**/*.php', '!./public/**/*.html']);
+    return del.sync(config.clean);
 });
 
 gulp.task('default', function (callback) {
