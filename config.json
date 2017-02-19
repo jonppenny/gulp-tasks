@@ -1,0 +1,30 @@
+{
+  "js": {
+    "src": [
+      "./resources/assets/js/server.js",
+      "./resources/assets/js/main.js"
+    ],
+    "dest": "./public/js",
+    "watch": "./resources/assets/js/**/*.js"
+  },
+  "sass": {
+    "src": "./resources/assets/sass/app.scss",
+    "dest": "./public/css",
+    "watch": "./resources/assets/sass/**/*.scss"
+  },
+  "images": {
+    "src": "./resources/assets/images/**/*.+(png|jpg|jpeg|gif|svg)",
+    "dest": "./public/images"
+  },
+  "fonts": {
+    "src": "./resources/assets/fonts/**/*",
+    "dest": "./public/fonts"
+  },
+  "clean": [
+    "./public/**/*",
+    "!./public/images",
+    "!./public/images/**/*",
+    "!./public/**/*.php",
+    "./public/**/*.html"
+  ]
+}
