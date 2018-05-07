@@ -13,6 +13,7 @@ var imageMin     = require('gulp-imagemin');
 var cache        = require('gulp-cache');
 var del          = require('del');
 var runSequence  = require('run-sequence');
+var babel = require('gulp-babel');
 
 gulp.task('browserSync', function () {
     browserSync({
@@ -43,6 +44,9 @@ gulp.task('watch', function () {
 gulp.task('js', function () {
     // return gulp.src('./resources/assets/js/**/*.js')
     return gulp.src(config.js.src)
+        .pipe(babel({
+            presets: ['env']
+        }))
         .pipe(concat('app.js'))
         .pipe(gulpIf('*.js', uglify()))
         .pipe(gulp.dest(config.js.dest));
@@ -73,7 +77,6 @@ gulp.task('clean:dist', function () {
 
 gulp.task('default', function (callback) {
     runSequence(
-        'clean:dist',
         ['sass', 'js'],
         'watch',
         callback
@@ -82,7 +85,6 @@ gulp.task('default', function (callback) {
 
 gulp.task('build', function (callback) {
     runSequence(
-        'clean:dist',
         'sass',
         'js',
         ['images', 'fonts'],
