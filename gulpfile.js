@@ -13,7 +13,7 @@ var imageMin     = require('gulp-imagemin');
 var cache        = require('gulp-cache');
 var del          = require('del');
 var runSequence  = require('run-sequence');
-var babel = require('gulp-babel');
+var babel        = require('gulp-babel');
 
 gulp.task('browserSync', function () {
     browserSync({
